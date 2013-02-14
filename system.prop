@@ -77,7 +77,7 @@ ro.config.ehrpd=true
 keyguard.no_require_sim=true
 
 ro.cdma.voicemail.number=mine
-ro.telephony.call_ring.delay=1000
+ro.telephony.call_ring.delay=100
 wifi.wapi=0
 
 ro.tethering.kb_disconnect=1
