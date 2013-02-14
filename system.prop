@@ -52,7 +52,7 @@ wifi.supplicant_scan_interval=90
 wifi.supplicant_no_update_ctrl=true
 
 service.config.gsensor_cal=1
-libcamera.orientation=0
+libcamera.orientation=90
 libcamera.testmode.colorbar=0
 service.config.wifi=0
 wimax.interface=wm0
@@ -77,7 +77,7 @@ ro.config.ehrpd=true
 keyguard.no_require_sim=true
 
 ro.cdma.voicemail.number=mine
-ro.telephony.call_ring.delay=1000
+ro.telephony.call_ring.delay=100
 wifi.wapi=0
 
 ro.tethering.kb_disconnect=1

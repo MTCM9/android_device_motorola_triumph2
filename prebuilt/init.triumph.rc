@@ -10,10 +10,16 @@ on early-fs
     mkdir /data 0771 system system
     mkdir /cache 0771 system system
     mkdir /devlog 0700 root root
+    mkdir /hidden 0771 system system
+    devwait /dev/block/mmcblk0p10
+    mkdir /hidden/data 0771 system system
+    devwait /dev/block/mmcblk0p9
 
     mount ext4 /dev/block/mmcblk0p7 /system wait ro barrier=1
     mount ext4 /dev/block/mmcblk0p8 /data wait noatime nosuid nodev barrier=1 noauto_da_alloc
     mount ext4 /dev/block/mmcblk0p11 /cache wait noatime nosuid nodev barrier=1
+    mount ext3 /dev/block/mmcblk0p10 /hidden wait noattime nosuid nodev
+    mount ext3 /dev/block/mmcblk0p9 /hidden/data nosuid nodev
 
 import init.triumph.usb.rc
 
@@ -123,8 +129,8 @@ on boot
     chmod 0660 /data/hostapd/hostapd.conf
 
     #Power Management 
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 245760
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1024000 
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 24576
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1516800 
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive 
     write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 50000 
 
