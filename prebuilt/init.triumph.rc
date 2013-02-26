@@ -12,20 +12,22 @@ on early-fs
     mkdir /devlog 0700 root root
     mkdir /hidden 0771 system system
     devwait /dev/block/mmcblk0p10
-    mkdir /hidden/data 0771 system system
+    mkdir /sd-ext 0771 system system
     devwait /dev/block/mmcblk0p9
 
     mount ext4 /dev/block/mmcblk0p7 /system wait ro barrier=1
     mount ext4 /dev/block/mmcblk0p8 /data wait noatime nosuid nodev barrier=1 noauto_da_alloc
     mount ext4 /dev/block/mmcblk0p11 /cache wait noatime nosuid nodev barrier=1
-    mount ext3 /dev/block/mmcblk0p10 /hidden wait noattime nosuid nodev
-    mount ext3 /dev/block/mmcblk0p9 /hidden/data nosuid nodev
+    mount ext4 /dev/block/mmcblk0p10 /hidden wait noattime nosuid nodev
+    mount ext3 /dev/block/mmcblk0p9 /sd-ext nosuid nodev
 
 import init.triumph.usb.rc
 
 on boot
 
     # linking some files from the /hidden partitions
+    chown root root /apklinks.sh
+    chmod 544 /apklinks.sh
     service apklink /apklinks.sh
     user root
     oneshot
