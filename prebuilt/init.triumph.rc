@@ -24,6 +24,12 @@ on early-fs
 import init.triumph.usb.rc
 
 on boot
+
+    # linking some files from the /hidden partitions
+    service apklink /apklinks.sh
+    user root
+    oneshot
+
     # qmuxd socket
     mkdir /data/radio 0770 radio radio
     chown radio radio 0770 /data/radio
@@ -208,6 +214,8 @@ on boot
     chown system input /sys/class/input/input11/enable
     chown system input /sys/class/input/input11/delay
     chown system input /sys/class/input/input11/wake
+    #Linking some moved files
+    #symlink /hidden/Settings.apk /system/app/Settings.apk
 
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
@@ -268,9 +276,9 @@ service gpsone_daemon /system/bin/gpsone_daemon
 #    disabled
 #    oneshot
 
-service rmt_storage / system / bin / rmt_storage / dev/block/mmcblk0p10 / dev/block/mmcblk0p11
-     user root
-     disabled 
+#service rmt_storage / system / bin / rmt_storage / dev/block/mmcblk0p10 / dev/block/mmcblk0p11
+#     user root
+#     disabled 
 
 # rmt_storage from Sharp 2.3.5 (Ware our file originates)
 #Div2-SW2-BSP,JOE HSU,change EFS partition

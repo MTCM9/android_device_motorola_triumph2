@@ -92,6 +92,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/motorola/triumph/prebuilt/init.triumph.usb.rc:root/init.triumph.usb.rc \
     device/motorola/triumph/prebuilt/init.triumph.rc:root/init.triumph.rc \
+    device/motorola/triumph/prebuilt/apklinks.sh:root/apklinks.sh \
     device/motorola/triumph/prebuilt/ueventd.triumph.rc:root/ueventd.triumph.rc \
     device/motorola/triumph/prebuilt/vold.fstab:system/etc/vold.fstab \
     device/motorola/triumph/prebuilt/init.qcom.bt.sh:/system/etc/init.qcom.bt.sh \
