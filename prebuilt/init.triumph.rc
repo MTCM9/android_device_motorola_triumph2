@@ -10,11 +10,16 @@ on early-fs
     mkdir /data 0771 system system
     mkdir /cache 0771 system system
     mkdir /devlog 0700 root root
+    mkdir /exA 0771 system system
+    devwait /dev/block/mmcblk0p10
+    mkdir /exB 0771 system system
+    devwait /dev/block/mmcblk0p9
 
     mount ext4 /dev/block/mmcblk0p7 /system wait ro barrier=1
     mount ext4 /dev/block/mmcblk0p8 /data wait noatime nosuid nodev barrier=1 noauto_da_alloc
     mount ext4 /dev/block/mmcblk0p11 /cache wait noatime nosuid nodev barrier=1
-
+    mount ext4 /dev/block/mmcblk0p10 /exA wait noattime nosuid nodev
+    mount ext4 /dev/block/mmcblk0p9 /exB nosuid nodev
 import init.triumph.usb.rc
 
 on boot
@@ -262,9 +267,9 @@ service gpsone_daemon /system/bin/gpsone_daemon
 #    disabled
 #    oneshot
 
-service rmt_storage / system / bin / rmt_storage / dev/block/mmcblk0p10 / dev/block/mmcblk0p11
-     user root
-     disabled 
+#service rmt_storage / system / bin / rmt_storage / dev/block/mmcblk0p10 / dev/block/mmcblk0p11
+#     user root
+#     disabled 
 
 # rmt_storage from Sharp 2.3.5 (Ware our file originates)
 #Div2-SW2-BSP,JOE HSU,change EFS partition
