@@ -172,8 +172,7 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm7x30 \
-    camtest \
-    libcamera2
+    camtest 
 
 # HDMI
 PRODUCT_PACKAGES += \

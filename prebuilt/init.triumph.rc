@@ -267,9 +267,9 @@ service gpsone_daemon /system/bin/gpsone_daemon
 #    disabled
 #    oneshot
 
-#service rmt_storage / system / bin / rmt_storage / dev/block/mmcblk0p10 / dev/block/mmcblk0p11
-#     user root
-#     disabled 
+service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p14 /dev/block/mmcblk0p15
+     user root
+     disabled 
 
 # rmt_storage from Sharp 2.3.5 (Ware our file originates)
 #Div2-SW2-BSP,JOE HSU,change EFS partition
